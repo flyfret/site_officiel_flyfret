@@ -1,1 +1,20 @@
+# Fichiers de configuration sensibles
+.env
+.env.backup
+
+# Dépendances à générer sur le serveur
+/vendor
+/node_modules
+
+# Dossiers générés ou uploadés par les utilisateurs
+/public/hot
+/public/storage
+/storage/*.key
+
+# Fichiers liés aux tests / cache
+.phpunit.result.cache
+
+# Logs et erreurs npm/yarn
+npm-debug.log
+yarn-error.log
 
