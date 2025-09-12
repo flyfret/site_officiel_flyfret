@@ -1,1 +1,51 @@
+name: Deploy to o2switch
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout du code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Installer PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      # 3️⃣ Installer les dépendances PHP
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      # 4️⃣ Synchroniser les fichiers avec rsync
+      - name: Rsync files to o2switch
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete --exclude-from=deploy/rsync-exclude.txt
+          path: ./
+          remote_path: /home/flyfret_user/public_html/site_flyfret
+          remote_host: ssh.siteflyfret.o2switch.net
+          remote_user: flyfret_user
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+
+      # 5️⃣ Post-déploiement (migrations, cache)
+      - name: Run post-deploy commands
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ssh.siteflyfret.o2switch.net
+          username: flyfret_user
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /home/flyfret_user/public_html/site_flyfret
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
 
