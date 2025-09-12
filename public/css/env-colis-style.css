@@ -1,0 +1,262 @@
+/* Typographie et couleurs */
+:root {
+    --primary-color: #7B01F7;
+    --secondary-color: #E701F6;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--white);
+}
+
+p {
+    font-weight: 400;
+    color: rgba(255,255, 255, 0.9);
+}
+
+/* Section Hero avec Carrousel */
+.hero-section {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(128, 34, 244,0.4);  */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--white);
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn-cta {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    font-weight: 600;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transform: scale(1.05);
+}
+
+/* Section Comment ça marche */
+.guide-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.guide-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.guide-section p.subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+.guide-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 36px;
+    margin: 0 auto 20px;
+}
+
+.guide-card h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.guide-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Section Expédition */
+.expedition-section {
+    padding: 80px 0;
+    background: var(--background-color);
+}
+
+.expedition-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.choice-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.choice-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.choice-box i {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.choice-box h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.choice-box .btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.choice-box .btn:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .guide-section h2, .expedition-section h2 {
+        font-size: 2rem;
+    }
+
+    .choice-box {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+.btn-professional {
+background: linear-gradient(45deg, #007bff, #6610f2);
+color: #fff;
+font-weight: 700;
+border: none;
+margin-top: 25px;
+display: inline-block;
+padding: 12px 30px;
+font-size: 1.1rem;
+border-radius: 10px;
+text-transform: uppercase;
+transition: all 0.3s ease;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+text-decoration: none;
+}
+
+.btn-professional:hover {
+background: linear-gradient(45deg, #6610f2, #007bff);
+transform: scale(1.05);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
