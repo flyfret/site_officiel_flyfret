@@ -1,5 +1,6 @@
 name: Deploy to o2switch
 
+# Déclenchement uniquement sur les tags v*
 on:
   push:
     tags:
@@ -10,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout du code
+      # 1️⃣ Récupérer le code depuis GitHub
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -24,28 +25,30 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
 
-      # 4️⃣ Synchroniser les fichiers avec rsync
+      # 4️⃣ Synchroniser les fichiers sur o2switch via rsync
       - name: Rsync files to o2switch
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete --exclude-from=deploy/rsync-exclude.txt
           path: ./
-          remote_path: /home/flyfret_user/public_html/site_flyfret
-          remote_host: ssh.siteflyfret.o2switch.net
-          remote_user: flyfret_user
-          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+          remote_path: ${{ secrets.SERVER_TARGET_PATH }}   # chemin sur le serveur
+          remote_host: ${{ secrets.SERVER_HOST }}         # adresse SSH
+          remote_user: ${{ secrets.SERVER_USER }}         # utilisateur SSH
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}       # clé privée SSH
 
-      # 5️⃣ Post-déploiement (migrations, cache)
+      # 5️⃣ Exécuter les commandes post-déploiement
       - name: Run post-deploy commands
         uses: appleboy/ssh-action@v0.1.6
         with:
-          host: ssh.siteflyfret.o2switch.net
-          username: flyfret_user
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /home/flyfret_user/public_html/site_flyfret
+            cd ${{ secrets.SERVER_TARGET_PATH }}
+            # Installer les dépendances PHP sur le serveur si nécessaire
             composer install --no-dev --optimize-autoloader
+            # Lancer les migrations en production
             php artisan migrate --force
+            # Optimiser les caches
             php artisan config:cache
             php artisan route:cache
-
