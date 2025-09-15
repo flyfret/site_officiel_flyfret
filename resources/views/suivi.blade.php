@@ -8,8 +8,8 @@
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #8a2be2;
-            --secondary-color: #ff69b4;
+            --primary-color: #8022F4;
+            --secondary-color: #F20CF3;
             --white: #ffffff;
             --light-gray: #f8f9fa;
             --gray: #6c757d;

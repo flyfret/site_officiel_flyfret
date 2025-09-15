@@ -1,4 +1,4 @@
-<footer class="footer-section" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white;">
+<footer class="footer-section" style="background: linear-gradient(135deg, #8022F4 0%, #F20CF3 100%); color: white;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
@@ -6,7 +6,7 @@
                         <h3 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 8px; margin-bottom: 20px;">Localisation</h3>
                         <ul class="location list-unstyled">
                             <li class="d-flex mb-3">
-                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>France</strong><br>
                                     Lyon <br>
@@ -16,14 +16,14 @@
                                 </div>
                             </li>
                             <li class="d-flex">
-                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>Côte d'Ivoire</strong><br>
                                     Abidjan 
                                 </div>
                             </li>
                             <li class="d-flex">
-                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>Etats-Unis</strong><br>
                                     {{-- New York --}}
@@ -38,14 +38,14 @@
                         <h3 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 8px; margin-bottom: 20px;">Contact</h3>
                         <ul class="location list-unstyled">
                             <li class="d-flex mb-3">
-                                <i class="fas fa-phone-alt mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="fas fa-phone-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>France</strong><br>
                                     +33 554543171
                                 </div>
                             </li>
                             <li class="d-flex">
-                                <i class="fas fa-phone-alt mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="fas fa-phone-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>Côte d'Ivoire</strong><br>
                                     +225 2722304819<br>
@@ -61,14 +61,14 @@
                         <h3 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 8px; margin-bottom: 20px;">Horaire</h3>
                         <ul class="location list-unstyled mb-4">
                             <li class="d-flex mb-3">
-                                <i class="far fa-clock mt-1 me-3" style="color:#ff7eb9;"></i>
+                                <i class="far fa-clock mt-1 me-3" style="color:#F20CF3;"></i>
                                 <div>
                                     <strong>Lundi - Samedi</strong><br>
                                     9h - 19h
                                 </div>
                             </li>
                             <li class="d-flex">
-                                <i class="far fa-clock mt-1 me-3" style="color: #ff7eb9;"></i>
+                                <i class="far fa-clock mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
                                     <strong>Dimanche</strong><br>
                                     14h - 19h

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Tableau de bord Admin</title>
     <meta
@@ -43,13 +42,8 @@
 
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="assets/css/demo.c
-    ss" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
-  <style>
- 
-  
-</style>
 
   <body>
     <div class="wrapper">

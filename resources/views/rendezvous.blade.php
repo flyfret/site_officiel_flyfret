@@ -31,9 +31,9 @@
         }
         
         .form-hero {
-            background: linear-gradient(135deg, #7B01F7 0%, #E100FF 100%);
+            background: linear-gradient(135deg, #8022F4 0%, #E100FF 100%);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(123, 1, 247, 0.2);
+            box-shadow: 0 10px 30px rgba(128, 34, 244, 0.2);
         }
         
         .form-control {
@@ -45,8 +45,8 @@
         }
         
         .form-control:focus {
-            border-color: #7B01F7;
-            box-shadow: 0 0 0 3px rgba(123, 1, 247, 0.2);
+            border-color: #8022F4;
+            box-shadow: 0 0 0 3px rgba(128, 34, 244, 0.2);
         }
         
         .form-icon {
@@ -54,7 +54,7 @@
             right: 15px;
             top: 42px;
             left: auto;
-            color: #7B01F7;
+            color: #8022F4;
         }
         
         .btn-primary {
