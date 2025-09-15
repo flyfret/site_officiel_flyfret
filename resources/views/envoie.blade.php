@@ -3,9 +3,9 @@
 @section('ChildContent')
     <style>
         :root {
-            --primary-color: ##8022F4;
-            --primary-light: #F20CF3;
-            --secondary-color: #F20CF3;
+            --primary-color: #7b01f7;
+            --primary-light: #9a49f9;
+            --secondary-color: #d90ad9;
             --dark-color: #2d3748;
             --light-color: #f7fafc;
             --white: #ffffff;
@@ -19,7 +19,7 @@
         /* Hero Section */
         .hero-section {
             background:
-                linear-gradient(#8022F4, #F20CF3),
+                linear-gradient(rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.8)),
                 url('/assets/images/im.jpg');
             background-size: cover;
             background-position: center;
@@ -199,7 +199,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.10);
         }
         .btn-primary:hover {
-            background-color: #8022F4;
+            background-color: #6a00d4;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(123, 1, 247, 0.18);
         }
@@ -218,7 +218,7 @@
             background-color: var(--primary-color);
             color: var(--white);
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px #8022F4;
+            box-shadow: 0 6px 12px rgba(123, 1, 247, 0.18);
         }
         .btn-alternate {
             background-color: var(--warning-color);

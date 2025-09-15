@@ -25,6 +25,13 @@
                             <li class="d-flex">
                                 <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
+                                    <strong>Sénégal</strong><br>
+                                    Dakar
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <i class="fas fa-map-marker-alt mt-1 me-3" style="color: #F20CF3;"></i>
+                                <div>
                                     <strong>Etats-Unis</strong><br>
                                     {{-- New York --}}
                                 </div>
@@ -52,6 +59,7 @@
                                     +225 0594946565
                                 </div>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
