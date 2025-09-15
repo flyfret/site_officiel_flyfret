@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #7B01F7;
-            --secondary-color: #F10CF3;
+            --primary-color: #8022F4;
+            --secondary-color: #F20CF3;
         }
         
         body {

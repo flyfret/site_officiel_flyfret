@@ -18,7 +18,7 @@
         }
 
         .offre-selectionnee {
-            border: 3px solid #4f46e5;
+            border: 3px solid #8022F4;
             background-color: #f3f4f6;
             transform: scale(1.02);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);

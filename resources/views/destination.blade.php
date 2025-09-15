@@ -1,6 +1,6 @@
 <form action="destinataire_action.php" method="POST" style="width: 48%; display: inline-block; padding: 10px; background-color: #f4f4f4; border-radius: 5px;">
     <fieldset>
-        <legend style="color:#7B01F7; font-size:16px">📦 Informations du destinataire</legend>
+        <legend style="color:#8022F4; font-size:16px">📦 Informations du destinataire</legend>
 
         <div class="form-group">
             <label for="receiver-name"><i class="fas fa-user"></i> Nom</label>

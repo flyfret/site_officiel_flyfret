@@ -5,9 +5,9 @@
    
     <style>
         :root {
-            --primary-color: #7b01f7;
-            --primary-light: #9a49f9;
-            --secondary-color: #d90ad9;
+            --primary-color: #8022F4;
+            --primary-light: #8022F4;
+            --secondary-color: #8022F4;
             --dark-color: #2d3748;
             --light-color: #f7fafc;
             --white: #ffffff;

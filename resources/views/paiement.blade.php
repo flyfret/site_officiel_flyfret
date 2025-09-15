@@ -34,7 +34,7 @@
             justify-content: space-between;
         }
         .active {
-            background-color: rgb(123, 1, 247);
+            background-color: #8022F4;
             color: white;
         }
         .hidden {

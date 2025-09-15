@@ -96,7 +96,7 @@
 <section class="section-padding" style="padding: 80px 0;">
     <div class="container">
         <div class="section-title text-center mb-5">
-            <h2 style="font-size: 2rem; color: #7B01F7; margin-bottom: 15px;">DÉCOUVREZ NOS OFFRES !</h2>
+            <h2 style="font-size: 2rem; color: #8022F4; margin-bottom: 15px;">DÉCOUVREZ NOS OFFRES !</h2>
             <p class="section-subtitle" style="font-size: 1.25rem; color: #6c757d; max-width: 700px; margin: 0 auto;">
                 Destinations principales
             </p>
@@ -108,7 +108,7 @@
                     <div class="offer-icon mb-3">
                         <i class="fas fa-plane fa-3x"></i>
                     </div>
-                    <h3 style="font-size: 1.5rem; color: #7B01F7;">📦 Abidjan ↔ Paris</h3>
+                    <h3 style="font-size: 1.5rem; color: #8022F4;">📦 Abidjan ↔ Paris</h3>
                     <p style="font-size: 1.1rem; color: #555;">
                         Expédiez vos colis entre Abidjan et Paris avec un service optimisé, des délais maîtrisés et un suivi en temps réel.
                     </p>
@@ -121,7 +121,7 @@
                     <div class="offer-icon mb-3">
                         <i class="fas fa-shipping-fast fa-3x"></i>
                     </div>
-                    <h3 style="font-size: 1.5rem; color: #7B01F7;">📦 Abidjan ↔ Lyon</h3>
+                    <h3 style="font-size: 1.5rem; color: #8022F4;">📦 Abidjan ↔ Lyon</h3>
                     <p style="font-size: 1.1rem; color: #555;">
                         Optez pour notre service premium avec assurance incluse pour garantir la sécurité de vos colis les plus précieux.
                     </p>
@@ -134,7 +134,7 @@
                     <div class="offer-icon mb-3">
                         <i class="fas fa-truck fa-3x"></i>
                     </div>
-                    <h3 style="font-size: 1.5rem; color: #7B01F7;">📦 Abidjan ↔ Nancy</h3>
+                    <h3 style="font-size: 1.5rem; color: #8022F4;">📦 Abidjan ↔ Nancy</h3>
                     <p style="font-size: 1.1rem; color: #555;">
                         Bénéficiez d'un accompagnement complet pour vos envois vers Nancy.
                     </p>
@@ -155,7 +155,7 @@
             
             <div class="col-lg-6">
                 <div class="departures-box p-5 rounded shadow-sm bg-white w-100">
-                    <h2 class="mb-4" style="color: #7B01F7; font-size: 1.8rem;">
+                    <h2 class="mb-4" style="color: #8022F4; font-size: 1.8rem;">
                         <i class="fas fa-plane-departure me-2"></i>
                         PROCHAINS DÉPARTS DE COLIS !
                     </h2>
@@ -211,7 +211,7 @@
 <section class="testimonials-section py-5 bg-light" style="padding: 80px 0;">
     <div class="container">
         <div class="section-title text-center mb-5">
-            <h2 style="font-size: 2rem; color: #7B01F7; margin-bottom: 15px;">TÉMOIGNAGES DE NOS CLIENTS</h2>
+            <h2 style="font-size: 2rem; color: #8022F4; margin-bottom: 15px;">TÉMOIGNAGES DE NOS CLIENTS</h2>
             <p class="section-subtitle" style="font-size: 1.25rem; color: #6c757d; max-width: 700px; margin: 0 auto;">
                 Découvrez ce que nos clients disent de nos services
             </p>
@@ -354,8 +354,8 @@
 <style>
 /* Global Styles */
 :root {
-    --primary-color: #7B01F7;
-    --secondary-color: #F10CF3;
+    --primary-color: #8022F4;
+    --secondary-color: #F20CF3;
     --dark-color: #2d2f31;
     --light-color: #f8f9fa;
 }

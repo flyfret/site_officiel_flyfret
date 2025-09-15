@@ -59,8 +59,7 @@
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(128, 34, 244, 0.3);
-        }
+            box-shadow: 0 4px 12px #8022F4
         
         .form-input {
             transition: all 0.3s ease;
@@ -82,11 +81,11 @@
         }
         
         a {
-            color: #8022F4;
+            color: #F20CF3;
         }
         
         a:hover {
-            color: #F10CF3;
+            color: #F20CF3;
         }
     </style>
     <!-- Ajoute FontAwesome pour les icônes -->

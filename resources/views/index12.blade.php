@@ -24,7 +24,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, rgba(123, 1, 247, 0.5), rgba(241, 12, 243, 0.5));
+        background: linear-gradient(to right, #8022F4, #F20CF3);
     }
     .hero-content {
         position: relative;

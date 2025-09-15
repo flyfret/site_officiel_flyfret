@@ -4,19 +4,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #8a2be2; /* Violet */
-            --secondary-color: #ff69b4; /* Rose vif */
+            --primary-color: #8022F4; /* Violet */
+            --secondary-color: #F20CF3; /* Rose vif */
             --dark-color: #2c3e50;
             --light-color: #f8f9fa;
             --white: #ffffff;
             --black: #000000;
             --light-gray: #f5f5f6;
             --medium-gray: #e1e2e1;
-            --dark-gray: #5a5c69;
+            --dark-gray: #8022F4;
         }
       
         .blog-hero {
-            background: linear-gradient(rgba(138, 43, 226, 0.85), rgba(138, 43, 226, 0.85)), 
+            background: linear-gradient(#8022F4, #F20CF3), 
                 url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;

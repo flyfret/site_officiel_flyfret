@@ -14,7 +14,7 @@
         }
 
         .table-header {
-            background-color: #4f46e5;
+            background-color: #8022F4;
             color: white;
         }
 
@@ -52,7 +52,7 @@
             padding: 8px 12px;
             border-radius: 6px;
             background-color: #e0e7ff;
-            color: #4f46e5;
+            color: #8022F4;
             text-decoration: none;
             transition: background-color 0.2s ease;
         }
@@ -62,7 +62,7 @@
         }
 
         .pagination .active {
-            background-color: #4f46e5;
+            background-color: #8022F4;
             color: white;
         }
     </style>

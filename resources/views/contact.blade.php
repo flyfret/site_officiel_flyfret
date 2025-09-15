@@ -5,15 +5,15 @@
 
 <style>
     :root {
-        --primary-color: #8a2be2;
-        --secondary-color: #ff69b4;
+        --primary-color: #8022F4;
+        --secondary-color: #F20CF3;
         --white: #ffffff;
-        --dark-purple: #4b0082;
+        --dark-purple: #8022F4;
         --light-bg: #f9f5ff;
     }
     
     .contact-header {
-        background: rgba(138, 43, 226, 0.4);
+        background: #8022F4;
         padding: 100px 0 60px;
         color: var(--white);
         text-align: center;
@@ -283,7 +283,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="contact-form">
-                    <h2 class="text-center mb-5" style="font-size: 2rem; color: #8a2be2;">Envoyez-nous un message</h2>
+                    <h2 class="text-center mb-5" style="font-size: 2rem; color: #8022F4;">Envoyez-nous un message</h2>
                     <form method="POST" action="{{ route('contact.send') }}">
                         @csrf
                         <div class="row">

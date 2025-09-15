@@ -15,13 +15,13 @@
 
         /* Variables */
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
+            --primary-color: #8022F4;
+            --secondary-color: #F20CF3;
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
-            --success-color: #2ecc71;
-            --warning-color: #f39c12;
+            --success-color: rgba(128, 34, 244, 0.8);
+            --warning-color: rgba(242, 12, 243, 0.8);
             --border-radius: 8px;
             --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }

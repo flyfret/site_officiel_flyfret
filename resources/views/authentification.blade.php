@@ -102,7 +102,7 @@
         }
         
         .section-title h2 {
-            color: #7b01f7;
+            color: #8022F4;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -152,7 +152,7 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            color: #7b01f7;
+            color: #8022F4;
         }
         
         .option-card h3 {
@@ -172,7 +172,7 @@
             display: inline-block;
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #7b01f7, #f10cf3);
+            background: linear-gradient(135deg, #8022F4, #f10cf3);
             color: white;
             border: none;
             border-radius: 8px;
@@ -202,13 +202,13 @@
         }
         
         .connected-message h2 {
-            color: #7b01f7;
+            color: #8022F4;
             margin-bottom: 20px;
         }
         
         .btn-primary {
-            background-color: #7b01f7;
-            border-color: #7b01f7;
+            background-color: #8022F4;
+            border-color: #8022F4;
             padding: 10px 20px;
             border-radius: 8px;
         }

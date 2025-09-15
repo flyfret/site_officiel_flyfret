@@ -129,8 +129,8 @@
 
 <style>
     :root {
-        --primary-color: #0056b3;
-        --secondary-color: #00a0e1;
+        --primary-color: #8022F4;
+        --secondary-color: #F20CF3;
         --dark-color: #2d3748;
         --light-color: #f8f9fa;
         --white: #ffffff;
