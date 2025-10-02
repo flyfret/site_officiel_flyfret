@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailsColis;
-use Illuminate\Http\Request;
 use App\Models\RendezVous;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RendezVousConfirmation;
-use App\Mail\RendezVousMail;
-use Illuminate\Support\Facades\Log;
+use App\Mail\RendezVousNotificationAdmin;
 
 class RendezVousController extends Controller
 {
@@ -28,21 +25,15 @@ class RendezVousController extends Controller
             // Log des données reçues
             Log::info('Données reçues', ['data' => $request->all()]);
 
-            // Convertir "non défini" en null pour le champ valeur
-            $request->merge([
-                'quantite' => $request->input('quantite') === 'non défini' ? 1 : $request->input('quantite'),
-                'valeur' => $request->input('valeur') === 'non défini' ? null : $request->input('valeur'),
-            ]);
-            
             $validatedData = $request->validate([
-                'nom' => 'required|string',
-                'prenom' => 'required|string',
+                'nom' => 'required|string|max:255',
+                'prenom' => 'required|string|max:255',
                 'email' => 'required|email',
                 'date' => 'required|date',
                 'heure' => 'required|date_format:H:i',
                 'motif' => 'required|string',
-                'agence' => 'nullable|string',
-                'autre_motif' => 'nullable|string',
+                'agence' => 'required|string',
+                'autre_motif' => 'nullable|string|required_if:motif,Autres',
             ]);
 
             Log::info('Données validées', ['data' => $validatedData]);
@@ -54,10 +45,12 @@ class RendezVousController extends Controller
 
             if ($existingAppointments >= 3) {
                 DB::rollBack();
-                return response()->json(['message' => 'Le créneau est déjà complet. Veuillez choisir un autre horaire.'], 400);
+                return response()->json([
+                    'message' => 'Le créneau est déjà complet. Veuillez choisir un autre horaire.'
+                ], 400);
             }
 
-            // Enregistre d'abord le rendez-vous
+            // Enregistrer le rendez-vous
             $rendezVous = RendezVous::create([
                 'nom' => $validatedData['nom'],
                 'prenom' => $validatedData['prenom'],
@@ -65,32 +58,45 @@ class RendezVousController extends Controller
                 'date' => $validatedData['date'],
                 'heure' => $validatedData['heure'],
                 'motif' => $validatedData['motif'],
-                'agence' => $request->input('agence', null),
-                'autre_motif' => $request->input('autre_motif', null),
+                'agence' => $validatedData['agence'],
+                'autre_motif' => $validatedData['autre_motif'] ?? null,
             ]);
 
+            // ENVOYER LES EMAILS AU CLIENT ET À L'ADMIN
             try {
-                Mail::to('kanousali.flyfret@gmail.com')->send(new RendezVousMail($rendezVous));
+                // Email de confirmation au CLIENT
+                Mail::to($rendezVous->email)->send(new RendezVousConfirmation($rendezVous));
+                
+                // Email de notification à l'ADMIN
+                $adminEmail = env('MAIL_FROM_ADDRESS', 'service.client@flyfret.net');
+                Mail::to($adminEmail)->send(new RendezVousNotificationAdmin($rendezVous));
                 
                 DB::commit();
 
-                Log::info('Rendez-vous enregistré et email envoyé', ['rendezVous' => $validatedData]);
+                Log::info('Rendez-vous enregistré et emails envoyés', [
+                    'rendezVous_id' => $rendezVous->id,
+                    'client_email' => $rendezVous->email,
+                    'admin_email' => $adminEmail
+                ]);
 
                 return response()->json([
-                    'message' => 'Rendez-vous enregistré avec succès! Le mail a été envoyé.',
+                    'message' => 'Rendez-vous enregistré avec succès! Un email de confirmation vous a été envoyé.',
                     'redirect' => true
                 ]);
+
             } catch (\Exception $e) {
-                DB::commit();
-                Log::error('Erreur lors de l\'envoi de l\'email: ' . $e->getMessage());
+                DB::commit(); // On garde le rendez-vous même si l'email échoue
+                
+                Log::error('Erreur lors de l\'envoi des emails: ' . $e->getMessage());
+                
                 return response()->json([
-                    'message' => 'Rendez-vous enregistré, mais une erreur est survenue lors de l\'envoi de l\'email.',
-                    'error' => $e->getMessage(),
-                    'redirect' => false
+                    'message' => 'Rendez-vous enregistré avec succès! Cependant, l\'email de confirmation n\'a pas pu être envoyé.',
+                    'redirect' => true,
+                    'email_error' => true
                 ], 200);
             }
+
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Log des erreurs de validation
             Log::error('Erreur de validation', ['errors' => $e->errors()]);
 
             return response()->json([
@@ -99,7 +105,6 @@ class RendezVousController extends Controller
             ], 422);
         } catch (\Exception $e) {
             DB::rollBack();
-
             Log::error('Erreur lors de l\'enregistrement du rendez-vous: ' . $e->getMessage());
 
             return response()->json([
@@ -111,7 +116,7 @@ class RendezVousController extends Controller
 
     public function liste()
     {
-        $rendezvous = RendezVous::with('detailsColis')->paginate(2);
+        $rendezvous = RendezVous::orderBy('created_at', 'desc')->paginate(10);
         return view('liste-rendezvous', compact('rendezvous'));
     }
 }

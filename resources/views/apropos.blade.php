@@ -6,15 +6,15 @@
 <!-- Custom CSS -->
 <style>
     :root {
-        --primary-color: #8a2be2;  /* Violet plus vif */
-        --secondary-color: #ff69b4;  /* Rose vif */
+        --primary-color: #8022F4;  /* Violet plus vif */
+        --secondary-color: #F20CF3;  /* Rose vif */
         --white: #ffffff;
         --dark-purple: #8a2be2;  /* Indigo */
     }
     
     /* Page Header - Version améliorée */
     .page-header {
-        background: rgba(138, 43, 226, 0.8);
+        background: #8022F4;
         background-size: cover;
         background-position: center;
         background-blend-mode: overlay;

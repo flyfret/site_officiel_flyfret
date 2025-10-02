@@ -20,7 +20,7 @@ class CreateDetailsColisTable extends Migration
             $table->string('num_details_colis')->unique();
             $table->string('type_colis');
             $table->decimal('quantite', 10, 2);
-            $table->decimal('valeur_marchande', 10, 2)->nullable();
+            $table->decimal('valeur_marchande', 10, 2);
 
             $table->string('status')->default('en attente'); 
             $table->string('nom_lot')->nullable();

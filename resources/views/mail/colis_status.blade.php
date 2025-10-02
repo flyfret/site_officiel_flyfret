@@ -34,7 +34,7 @@
             
             <p>Vous pouvez suivre l'état de votre colis à tout moment en utilisant votre numéro de suivi sur notre plateforme.</p>
 
-            <a href="{{ route('suiviColis) }}" class="tracking-button">
+            <a href="{{ route('suiviColis') }}" class="tracking-button">
                 Suivre mon colis
             </a>
 

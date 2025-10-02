@@ -5,9 +5,9 @@
    
     <style>
         :root {
-            --primary-color: #7b01f7;
-            --primary-light: #9a49f9;
-            --secondary-color: #d90ad9;
+            --primary-color: #8022F4;
+            --primary-light: #8022F4;
+            --secondary-color: #8022F4;
             --dark-color: #2d3748;
             --light-color: #f7fafc;
             --white: #ffffff;
@@ -141,85 +141,65 @@
     <!-- Main Content -->
     <div class="content-container">
         <div class="section-card" >
-            <h2 class="section-title">1. Acceptation des conditions</h2>
-            <p>En utilisant les services de FlyFret, vous acceptez pleinement et sans réserve les présentes conditions générales. Ces conditions s'appliquent à tous les services proposés par notre plateforme.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Important :</strong> Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser nos services. L'utilisation de nos services vaut acceptation des conditions en vigueur au moment de l'utilisation.</p>
-            </div>
+            <h2 class="section-title">1. Objet du contrat</h2>
+            <p>Le présent contrat a pour objet de définir les conditions dans lesquelles la société FLYFRET INTERNATIONAL GROUP, ci-après dénommée "le Transporteur", s'engage à acheminer les colis confiés par le Client entre la Côte d'Ivoire et la France, dans les deux sens.</p>
         </div>
 
         <div class="section-card" >
             <h2 class="section-title">2. Services proposés</h2>
-            <p>FlyFret propose des services de transport et de livraison de colis selon les modalités suivantes :</p>
+            <p>Le Transporteur propose des services de transit de colis entre la France et la Côte d'Ivoire, incluant :</p>
             
             <ul class="mt-4">
-                <li class="list-item">Service standard avec délai de livraison de 2 à 5 jours ouvrés</li>
-                <li class="list-item">Service express avec livraison sous 24 à 48 heures</li>
-                <li class="list-item">Suivi en temps réel des colis</li>
-                <li class="list-item">Assurance optionnelle des colis</li>
+                <li class="list-item">La collecte des colis en France ou en Côte d'Ivoire</li>
+                <li class="list-item">Le transport international</li>
+                <li class="list-item">Les formalités douanières</li>
+                <li class="list-item">La livraison au destinataire final</li>
             </ul>
         </div>
 
         <div class="section-card" >
-            <h2 class="section-title">3. Engagements de FlyFret</h2>
-            <p>Nous nous engageons à :</p>
+            <h2 class="section-title">3. Obligations du Client</h2>
+            <p>Le Client s'engage à :</p>
             
             <ul class="mt-4">
-                <li class="list-item">Respecter les délais de livraison annoncés</li>
-                <li class="list-item">Traiter les colis avec soin et professionnalisme</li>
-                <li class="list-item">Maintenir la confidentialité des informations clients</li>
-                <li class="list-item">Fournir un service client réactif et efficace</li>
+                <li class="list-item">Fournir des informations exactes et complètes sur le contenu, la valeur et la destination des colis</li>
+                <li class="list-item">Emballer correctement les colis pour assurer leur protection durant le transport</li>
+                <li class="list-item">Respecter les restrictions sur les marchandises interdites ou dangereuses</li>
             </ul>
+        </div>
+
+        <div class="section-card" >
+            <h2 class="section-title">6. Délais de livraison</h2>
+            <p>Les délais de livraison sont donnés à titre indicatif. Le Transporteur ne peut être tenu responsable des retards dus à des événements indépendants de sa volonté (grèves, intempéries, contrôles douaniers, etc.).</p>
+        </div>
+
+        <div class="section-card" >
+            <h2 class="section-title">7. Assurance et responsabilité</h2>
+            <p>En cas de perte, de détérioration ou de vol, vos envois bénéficient d'une assurance de base permettant une indemnisation de 15€/kg sans pouvoir dépasser 200€ par expédition de colis. Le Client peut souscrire une assurance complémentaire pour une couverture plus étendue.</p>
             
             <div class="highlight-box mt-6">
-                <p><strong>Limitation de responsabilité :</strong> FlyFret ne peut être tenu responsable des retards de livraison dus à des circonstances indépendantes de sa volonté (grèves, intempéries, etc.).</p>
+                <p><strong>Important :</strong> La responsabilité du transporteur est exemptée pour les colis interdits et/ou ayant fait l'objet d'une fausse déclaration auprès de nos services.</p>
             </div>
         </div>
 
         <div class="section-card" >
-            <h2 class="section-title">4. Obligations du client</h2>
-            <p>En utilisant nos services, vous vous engagez à :</p>
-            
-            <ul class="mt-4">
-                <li class="list-item">Fournir des informations exactes et complètes</li>
-                <li class="list-item">Respecter les restrictions concernant les colis (poids, dimensions, contenus prohibés)</li>
-                <li class="list-item">Emballer correctement vos colis pour le transport</li>
-                <li class="list-item">Payer les frais de transport selon les tarifs en vigueur</li>
-            </ul>
+            <h2 class="section-title">8. Réclamations</h2>
+            <p>Toute réclamation doit être adressée au Transporteur par écrit dans un délai de 14 jours suivant la livraison du colis.</p>
         </div>
 
         <div class="section-card" >
-            <h2 class="section-title">5. Tarifs et paiement</h2>
-            <p>Les tarifs sont calculés en fonction :</p>
-            
-            <ul class="mt-4">
-                <li class="list-item">Du poids et des dimensions du colis</li>
-                <li class="list-item">De la distance à parcourir</li>
-                <li class="list-item">De la vitesse de livraison choisie</li>
-                <li class="list-item">Des options supplémentaires (assurance, livraison premium)</li>
-            </ul>
-            
-            <p class="mt-6">Les paiements peuvent être effectués :</p>
-            <ul class="mt-2">
-                <li class="list-item">En ligne par carte bancaire</li>
-                <li class="list-item">En espèces à la livraison (selon options disponibles)</li>
-                <li class="list-item">Par virement bancaire (pour les clients professionnels)</li>
-            </ul>
+            <h2 class="section-title">9. Protection des données personnelles</h2>
+            <p>Le Transporteur s'engage à respecter la confidentialité des données personnelles du Client conformément au Règlement Général sur la Protection des Données (RGPD).</p>
         </div>
 
         <div class="section-card" >
-            <h2 class="section-title">6. Protection des données</h2>
-            <p>FlyFret s'engage à protéger vos données personnelles conformément au RGPD. Les données collectées sont utilisées uniquement dans le cadre de la prestation de nos services et ne sont pas transmises à des tiers sans votre consentement.</p>
-            
-            <div class="highlight-box mt-6">
-                <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ces droits, contactez notre service client.</p>
-            </div>
+            <h2 class="section-title">10. Droit applicable et juridiction compétente</h2>
+            <p>Le présent contrat est soumis au droit français et ivoirien. En cas de litige, les tribunaux de la ville concernée seront seuls compétents.</p>
         </div>
 
         <div class="section-card" >
-            <h2 class="section-title">7. Modifications des conditions</h2>
-            <p>FlyFret se réserve le droit de modifier les présentes conditions générales à tout moment. Les modifications prendront effet dès leur publication sur notre site. Nous vous recommandons de consulter régulièrement cette page.</p>
+            <h2 class="section-title">11. Modification des conditions générales</h2>
+            <p>Le Transporteur se réserve le droit de modifier les présentes conditions générales. Toute modification sera notifiée au Client avant son entrée en vigueur.</p>
             
             <p class="mt-6">Pour toute question concernant nos conditions générales, vous pouvez nous contacter :</p>
             <ul class="mt-2">

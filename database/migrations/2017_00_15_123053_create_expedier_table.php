@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('mode_expedition');
             $table->string('ville_expedition');
             $table->string('adresse_expediteur');
-            $table->date('date_expedition')->nullable();
+            $table->date('date_expedition')->nullable()->default(null);
             $table->timestamps();
             $table->foreign('num_cli')->references('num_cli')->on('clients')->onDelete('cascade');
             $table->foreign('num_col')->references('num_col')->on('details_colis')->onDelete('cascade');

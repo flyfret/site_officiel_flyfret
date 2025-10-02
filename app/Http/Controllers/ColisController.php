@@ -31,14 +31,18 @@ class ColisController extends Controller
     
     public function calculate(Request $request)
     {
+        // Validation plus flexible pour accepter les données du formulaire
         $request->validate([
             'mode_transport' => 'required|in:aerien,maritime',
             'ville_depart' => 'required|string',
-            'ville_destination' => 'required|string|different:ville_depart',
+            'ville_destination' => 'required|string',
             'colis' => 'required|array',
             'colis.*.type' => 'required|string',
             'colis.*.quantite' => 'required|integer|min:1',
-            'colis.*.valeur_marchande' => 'nullable|numeric|min:0', // Allow nullable values
+            'colis.*.valeur_marchande' => 'nullable|numeric|min:0',
+            'colis.*.prix_unitaire' => 'nullable|numeric|min:0',
+            'colis.*.devise' => 'nullable|string',
+            'colis.*.conservation' => 'nullable|boolean',
         ]);
 
         try {
@@ -47,37 +51,34 @@ class ColisController extends Controller
             $villeDestination = $request->ville_destination;
             $colisList = $request->colis;
 
+            // Calculer le prix total basé sur les données envoyées
             $totalPrice = 0;
-
+            
             foreach ($colisList as $colis) {
-                $typeColis = $colis['type'];
-                $quantite = $colis['quantite'];
-                $valeurMarchande = $colis['valeur_marchande'] ?? 0; // Default to 0 if not provided
-
-                // Fetch the price from the database
-                $price = GrilleDesPrix::where('origine', $villeDepart)
-                    ->where('destination', $villeDestination)
-                    ->where('designation', $typeColis)
-                    ->first();
-
-                if ($price) {
-                    $totalPrice += $price->prix * $quantite;
-                } else {
-                    // Default price if no match is found
-                    $totalPrice += 50 * $quantite; // 50€ per colis by default
-                }
+                $prixUnitaire = $colis['prix_unitaire'] ?? 0;
+                $quantite = $colis['quantite'] ?? 1;
+                $totalPrice += $prixUnitaire * $quantite;
             }
 
-            $prixExpress = $totalPrice + 2; // Express price = Standard price + 2
+            // Calculer le prix express
+            $prixExpress = $totalPrice * 1.5;
 
+            // Enregistrer les données dans la base de données si nécessaire
+            // Ici vous pouvez enregistrer le devis temporairement
+            
             return response()->json([
+                'success' => true,
                 'total_price' => $totalPrice,
                 'prix_express' => $prixExpress,
-                'offre' => 'standard'
+                'message' => 'Devis calculé avec succès'
             ]);
+
         } catch (\Exception $e) {
             Log::error('Erreur dans calculate: ' . $e->getMessage());
-            return response()->json(['error' => 'Erreur lors du calcul du prix'], 500);
+            return response()->json([
+                'success' => false,
+                'error' => 'Erreur lors du calcul du prix: ' . $e->getMessage()
+            ], 500);
         }
     }
 

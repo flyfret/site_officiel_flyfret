@@ -137,7 +137,7 @@ class InscriptionController extends Controller
                 'mode_expedition' => $validated['mode_expedition'],
                 'ville_expedition' => $validated['ville_expedition'],
                 'adresse_expediteur' => $validated['adresse_expediteur'],
-                'date_expedition' => now(),
+                // 'date_expedition' => now(),
                 'num_cli' => $clientExpediteur->num_cli,
                 'expediteur_id' => $expediteur->id,
             ]);
@@ -148,7 +148,7 @@ class InscriptionController extends Controller
                 'num_col' => $detailsColis->num_col,
                 'ville_retrait' => $validated['ville_retrait'],
                 'adresse_retrait' => $validated['adresse_destinataire'],
-                'date_retrait' => now(),
+                // 'date_retrait' => now(),
                 'num_cli' => $clientDestinataire->num_cli,
                 'destinataire_id' => $destinataire->id,
             ]);

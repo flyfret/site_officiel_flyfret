@@ -110,7 +110,7 @@
     
     .status-shipped {
         background-color: #dbeafe;
-        color: #2563eb;
+        color: #8022F4;
     }
     
     .action-btn {
@@ -131,7 +131,7 @@
     
     .view-btn {
         background-color: #e0e7ff;
-        color: #4f46e5;
+        color: #8022F4;
     }
     
     .pagination {
@@ -193,7 +193,7 @@
     }
     
     .primary-btn {
-        background-color: #4f46e5;
+        background-color: #8022F4;
         color: white;
         padding: 0.625rem 1.25rem;
         border-radius: 6px;
@@ -202,7 +202,7 @@
     }
     
     .primary-btn:hover {
-        background-color: #4338ca;
+        background-color: #8022F4;
     }
 </style>
 

@@ -139,7 +139,6 @@ Route::post('/rendezvous', [RendezVousController::class, 'storeRendezVous'])->na
 // pas demander
 Route::get('/rendezvousliste', [RendezVousController::class, 'liste'])->name('rendezvous.liste');
 
-
 Route::middleware('guest')->group(function () {
     Route::get('/inscription-client', [AuthClientController::class, 'create'])->name('inscription.client.form');
     Route::post('/inscription-client', [AuthClientController::class, 'store'])->name('inscription.client.store');

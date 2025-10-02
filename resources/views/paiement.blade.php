@@ -34,7 +34,7 @@
             justify-content: space-between;
         }
         .active {
-            background-color: rgb(123, 1, 247);
+            background-color: #8022F4;
             color: white;
         }
         .hidden {
@@ -78,7 +78,8 @@
             <button id="mobileMoneyBtn" class="active">Mobile Money</button>
             <button id="cardBtn">Carte de crédit</button>
         </div>
-        <form id="paymentForm" method="POST" action="{{ route('paiements.store') }}">
+        <form id="paymentForm" method="POST">
+             {{-- action="{{ route('paiements.store') }} --}}
         @csrf 
             <div id="mobileMoneyFields">
                 <div class="form-group">

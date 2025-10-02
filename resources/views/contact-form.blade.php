@@ -24,7 +24,7 @@
         }
         
         .email-header {
-            background: linear-gradient(rgba(123, 1, 247, 0.85), rgba(123, 1, 247, 0.85));
+            background: linear-gradient(#8022F4, #F20CF3);
             color: white;
             padding: 30px 20px;
             text-align: center;
@@ -41,8 +41,8 @@
         }
         
         .message-details {
-            background: #f9f5ff;
-            border-left: 4px solid #8a2be2;
+            background: #F20CF3;
+            border-left: 4px solid #8022F4;
             padding: 20px;
             margin-bottom: 25px;
             border-radius: 0 4px 4px 0;
@@ -130,7 +130,7 @@
             </div>
             
             <p style="margin-top: 25px;">
-                <a href="mailto:{{ $data['email'] }}" style="background: #8a2be2; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">
+                <a href="mailto:{{ $data['email'] }}" style="background: #8022F4; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">
                     Répondre à {{ $data['name'] }}
                 </a>
             </p>

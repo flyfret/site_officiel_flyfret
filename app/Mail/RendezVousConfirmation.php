@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\RendezVous;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -10,36 +11,38 @@ class RendezVousConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $nom;
-    public $prenom;
-    public $date;
-    public $heure;
+    public $rendezVous;
+    public $detailsRendezVous;
 
     /**
-     * Crée une nouvelle instance du message.
+     * Create a new message instance.
      *
-     * @param string $nom
-     * @param string $prenom
-     * @param string $date
-     * @param string $heure
+     * @return void
      */
-    public function __construct($nom, $prenom, $date, $heure)
+    public function __construct(RendezVous $rendezVous)
     {
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->date = $date;
-        $this->heure = $heure;
+        $this->rendezVous = $rendezVous;
+        $this->detailsRendezVous = [
+            'nom_complet' => $rendezVous->prenom . ' ' . $rendezVous->nom,
+            'date' => $rendezVous->date,
+            'heure' => $rendezVous->heure,
+            'motif' => $rendezVous->motif,
+            'agence' => $rendezVous->agence,
+            'autre_motif' => $rendezVous->autre_motif,
+        ];
     }
 
     /**
-     * Construit le message.
+     * Build the message.
      *
      * @return $this
      */
     public function build()
     {
-        return $this->subject('Confirmation de Rendez-vous')
-                    ->view('emails.rendezvous_confirmation')
-                    ->cc(env('MAIL_ADMIN_ADDRESS')); // Envoie une copie à l'admin
+        return $this->subject('Confirmation de votre rendez-vous FlyFret')
+                    ->view('mail.rendezvous-confirmation')
+                    ->with([
+                        'details' => $this->detailsRendezVous,
+                    ]);
     }
 }

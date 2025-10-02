@@ -5,15 +5,15 @@
 
 <style>
     :root {
-        --primary-color: #8a2be2;
-        --secondary-color: #ff69b4;
+        --primary-color: #8022F4;
+        --secondary-color: #F20CF3;
         --white: #ffffff;
-        --dark-purple: #4b0082;
+        --dark-purple: #8022F4;
         --light-bg: #f9f5ff;
     }
     
     .contact-header {
-        background: rgba(138, 43, 226, 0.4);
+        background: #8022F4;
         padding: 100px 0 60px;
         color: var(--white);
         text-align: center;
@@ -126,11 +126,18 @@
         border: 1px solid #ddd;
         padding: 0 15px;
         margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(128, 34, 244, 0.2);
     }
     
     textarea.form-control {
         height: 150px;
         padding: 15px;
+        resize: vertical;
     }
     
     .submit-btn {
@@ -142,11 +149,18 @@
         font-weight: 600;
         text-transform: uppercase;
         transition: all 0.3s ease;
+        cursor: pointer;
     }
     
     .submit-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+    }
+    
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
     }
     
     .map-section {
@@ -166,9 +180,102 @@
         border: none;
     }
     
+    /* Styles pour les messages d'alerte */
+    .alert-container {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        z-index: 1050;
+        min-width: 350px;
+        animation: slideInRight 0.5s ease-out;
+    }
+    
+    .alert-success {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .alert-error {
+        background: linear-gradient(135deg, #dc3545, #e83e8c);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .alert-icon {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    
+    /* Barre de progression pour la disparition */
+    .alert-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        transform-origin: left;
+        animation: progressBar 4s linear forwards;
+    }
+    
+    /* Animation pour la barre de progression */
+    @keyframes progressBar {
+        0% {
+            transform: scaleX(1);
+        }
+        100% {
+            transform: scaleX(0);
+        }
+    }
+    
+    /* Animation d'entrée */
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Animation de sortie */
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .alert-hiding {
+        animation: slideOutRight 0.5s ease-in forwards;
+    }
+    
     @media (max-width: 991.98px) {
         .contact-header h1 {
             font-size: 2.5rem;
+        }
+        
+        .alert-container {
+            left: 20px;
+            right: 20px;
+            min-width: auto;
         }
     }
     
@@ -206,8 +313,37 @@
         .map-container {
             height: 300px;
         }
+        
+        .alert-container {
+            top: 80px;
+            left: 10px;
+            right: 10px;
+        }
     }
 </style>
+
+<!-- Messages d'alerte -->
+@if(session('success'))
+<div class="alert-container" id="successAlert">
+    <div class="alert-success">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <strong>Succès !</strong> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" onclick="closeAlert('successAlert')" style="float: right; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;"></button>
+        <div class="alert-progress"></div>
+    </div>
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert-container" id="errorAlert">
+    <div class="alert-error">
+        <i class="fas fa-exclamation-triangle alert-icon"></i>
+        <strong>Attention !</strong> {{ session('error') }}
+        <button type="button" class="btn-close btn-close-white" onclick="closeAlert('errorAlert')" style="float: right; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;"></button>
+        <div class="alert-progress"></div>
+    </div>
+</div>
+@endif
 
 <!-- Contact Header -->
 <section class="contact-header">
@@ -283,21 +419,38 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="contact-form">
-                    <h2 class="text-center mb-5" style="font-size: 2rem; color: #8a2be2;">Envoyez-nous un message</h2>
-                    <form method="POST" action="{{ route('contact.send') }}">
+                    <h2 class="text-center mb-5" style="font-size: 2rem; color: #8022F4;">Envoyez-nous un message</h2>
+                    <form method="POST" action="{{ route('contact.send') }}" id="contactForm">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
+                                <input type="text" name="name" class="form-control" placeholder="Votre nom" value="{{ old('name') }}" required>
+                                @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6">
-                                <input type="email" name="email" class="form-control" placeholder="Votre email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Votre email" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
-                        <input type="text" name="subject" class="form-control" placeholder="Sujet" required>
-                        <textarea name="message" class="form-control" placeholder="Votre message" required></textarea>
+                        <input type="text" name="subject" class="form-control" placeholder="Sujet" value="{{ old('subject') }}" required>
+                        @error('subject')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                        <textarea name="message" class="form-control" placeholder="Votre message" required>{{ old('message') }}</textarea>
+                        @error('message')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                         <div class="text-center">
-                            <button type="submit" class="submit-btn">Envoyer le message</button>
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span id="btnText">Envoyer le message</span>
+                                <div id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status">
+                                    <span class="visually-hidden">Chargement...</span>
+                                </div>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -314,5 +467,72 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    // Gestion de la soumission du formulaire
+    if (contactForm) {
+        contactForm.addEventListener('submit', function() {
+            // Désactiver le bouton et afficher le spinner
+            submitBtn.disabled = true;
+            btnText.textContent = 'Envoi en cours...';
+            btnSpinner.classList.remove('d-none');
+        });
+    }
+    
+    // Auto-dismiss des alertes après 4 secondes
+    autoDismissAlerts();
+});
+
+// Fonction pour fermer une alerte manuellement
+function closeAlert(alertId) {
+    const alert = document.getElementById(alertId);
+    if (alert) {
+        alert.classList.add('alert-hiding');
+        setTimeout(() => {
+            alert.remove();
+        }, 500);
+    }
+}
+
+// Fonction pour la disparition automatique des alertes
+function autoDismissAlerts() {
+    const alerts = document.querySelectorAll('.alert-container');
+    
+    alerts.forEach(function(alert) {
+        // Disparaît automatiquement après 4 secondes
+        setTimeout(() => {
+            if (alert.parentNode) {
+                alert.classList.add('alert-hiding');
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 500);
+            }
+        }, 4000); // 4 secondes
+    });
+}
+
+// Réactiver le bouton si la page est rechargée (cas d'erreur de validation)
+window.addEventListener('pageshow', function(event) {
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    if (submitBtn && submitBtn.disabled) {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Envoyer le message';
+        if (btnSpinner) {
+            btnSpinner.classList.add('d-none');
+        }
+    }
+});
+</script>
 
 @endsection

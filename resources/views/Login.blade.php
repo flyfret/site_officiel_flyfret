@@ -6,8 +6,8 @@
   <title>Connexion | FlyFret</title>
   <style>
     :root {
-      --primary: #6C63FF;
-      --primary-dark: #564FD9;
+      --primary: #8022F4F;
+      --primary-dark: #F20CF3;
       --accent: #FF6584;
       --white: #FFFFFF;
       --light: #F8FAFC;

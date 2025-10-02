@@ -3,20 +3,24 @@
 namespace App\Mail;
 
 use Illuminate\Mail\Mailable;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
 
 class ContactAdminMail extends Mailable
 {
-    public $userEmail;
+    use Queueable, SerializesModels;
 
-    public function __construct($userEmail)
+    public $contactData;
+
+    public function __construct($contactData)
     {
-        $this->userEmail = $userEmail;
+        $this->contactData = $contactData;
     }
 
     public function build()
     {
-        return $this->subject('Demande de déblocage de compte')
-                    ->view('emails.contact_admin')
-                    ->with(['userEmail' => $this->userEmail]);
+        return $this->subject('📧 Nouveau message de contact - ' . $this->contactData['subject'])
+                    ->view('mail.contact_admin')
+                    ->with(['data' => $this->contactData]);
     }
 }
