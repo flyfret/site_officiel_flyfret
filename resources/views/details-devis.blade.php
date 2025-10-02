@@ -517,7 +517,7 @@
 
                         // Variables pour les offres
                         $prixTotal = $_GET['prixTotal'] ?? $prixTotalColis;
-                        $prixExpress = $_GET['prixExpress'] ?? ($estFrance ? $prixTotal + 2 : $prixTotal + (2 * $tauxConversion));
+                        $prixExpress = $_GET['prixExpress'] ?? ($estFrance ? round($prixTotal * 1.5) : $prixTotal + (2 * $tauxConversion));
                         
                         // Si une réduction est appliquée, utiliser les prix avec réduction
                         if ($discountApplied) {

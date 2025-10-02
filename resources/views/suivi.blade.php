@@ -618,8 +618,8 @@
                                 <div class="detail-row">
                                     <div class="detail-label">Nom du lot :</div>
                                     <div class="detail-value">{{ $colis->nom_lot }}</div>
-                                </div> --}}
-                                @endif
+                                </div> 
+                                @endif--}}
                                 <div class="detail-row">
                                     <div class="detail-label">Date d'envoi :</div>
                                     <div class="detail-value">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,43 +13,52 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
         }
-        
+
         .floating-icon {
             position: fixed;
             opacity: 0.1;
             z-index: -1;
             animation: float 6s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
-        
+
         .form-hero {
             background: linear-gradient(135deg, #8022F4 0%, #E100FF 100%);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(128, 34, 244, 0.2);
         }
-        
+
         .form-control {
             transition: all 0.3s ease;
             border: 2px solid #e2e8f0;
-            padding-left: 16px;  /* réduit le padding à gauche */
-            padding-right: 48px; /* espace pour l'icône à droite */
+            padding-left: 16px;
+            /* réduit le padding à gauche */
+            padding-right: 48px;
+            /* espace pour l'icône à droite */
             color: rgba(0, 0, 0, 0.6);
         }
-        
+
         .form-control:focus {
             border-color: #8022F4;
             box-shadow: 0 0 0 3px rgba(128, 34, 244, 0.2);
         }
-        
+
         .form-icon {
             position: absolute;
             right: 15px;
@@ -56,17 +66,17 @@
             left: auto;
             color: #8022F4;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, #7B01F7 0%, #E100FF 100%);
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(123, 1, 247, 0.3);
         }
-        
+
         .whatsapp-btn {
             background: #25D366;
             width: 60px;
@@ -78,23 +88,23 @@
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .whatsapp-btn:hover {
             transform: scale(1.1);
         }
-        
+
         /* Personnalisation des éléments de formulaire */
-       
+
         select.form-control option {
-           
+
             color: #000000 !important;
         }
-        
+
         /* Pour le placeholder (option vide) */
         select.form-control option[value=""] {
             color: #000 !important;
         }
-        
+
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr !important;
@@ -103,6 +113,7 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen flex items-center justify-center p-4">
     <!-- Floating decorative icons -->
     <i data-feather="calendar" class="floating-icon text-purple-500" style="top: 10%; left: 5%;"></i>
@@ -115,40 +126,51 @@
         <!-- Form Hero Section -->
         <section class="form-hero p-8 md:p-12 text-white mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-center mb-6">Prenez rendez-vous avec FlyFret</h1>
-            
+
             <!-- Formulaire -->
-            <form id="rendezvousForm" class="bg-white rounded-xl p-6 md:p-8 shadow-xl">
+            <form id="rendezvousForm" class="bg-white rounded-xl p-6 md:p-8 shadow-xl" action="{{ route('rendezvous.store') }}" method="POST">
+                @csrf
                 <!-- Nom et Prénom -->
                 <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div class="form-group relative">
-                        <label for="nom" class="block text-gray-700 font-medium mb-2">Nom <span class="text-red-500">*</span></label>
-                        <input type="text" id="nom" name="nom" class="form-control w-full p-3 rounded-lg" placeholder="Votre nom" required>
+                        <label for="nom" class="block text-gray-700 font-medium mb-2">Nom <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="nom" name="nom" class="form-control w-full p-3 rounded-lg"
+                            placeholder="Votre nom" required>
                         <i data-feather="user" class="form-icon"></i>
                     </div>
                     <div class="form-group relative">
-                        <label for="prenom" class="block text-gray-700 font-medium mb-2">Prénom <span class="text-red-500">*</span></label>
-                        <input type="text" id="prenom" name="prenom" class="form-control w-full p-3 rounded-lg" placeholder="Votre prénom" required>
+                        <label for="prenom" class="block text-gray-700 font-medium mb-2">Prénom <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="prenom" name="prenom" class="form-control w-full p-3 rounded-lg"
+                            placeholder="Votre prénom" required>
                         <i data-feather="user" class="form-icon"></i>
                     </div>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group relative mb-6">
-                    <label for="email" class="block text-gray-700 font-medium mb-2">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email" class="form-control w-full p-3 rounded-lg" placeholder="exemple@email.com" required>
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Email <span
+                            class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="email" class="form-control w-full p-3 rounded-lg"
+                        placeholder="exemple@email.com" required>
                     <i data-feather="mail" class="form-icon"></i>
                 </div>
 
                 <!-- Date et Heure -->
                 <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div class="form-group">
-                        <label for="date" class="block text-gray-700 font-medium mb-2">Date <span class="text-red-500">*</span></label>
-                        <input type="date" id="date" name="date" class="form-control w-full p-3 rounded-lg" placeholder="Sélectionnez une date" required>
+                        <label for="date" class="block text-gray-700 font-medium mb-2">Date <span
+                                class="text-red-500">*</span></label>
+                        <input type="date" id="date" name="date" class="form-control w-full p-3 rounded-lg"
+                            placeholder="Sélectionnez une date" required>
                         <i data-feather="calendar" class="form-icon"></i>
                     </div>
                     <div class="form-group relative">
-                        <label for="heure" class="block text-gray-700 font-medium mb-2">Heure <span class="text-red-500">*</span></label>
-                        <select id="heure" name="heure" class="form-control w-full p-3 rounded-lg appearance-none" required>
+                        <label for="heure" class="block text-gray-700 font-medium mb-2">Heure <span
+                                class="text-red-500">*</span></label>
+                        <select id="heure" name="heure" class="form-control w-full p-3 rounded-lg appearance-none"
+                            required>
                             <option value="" selected style="color: #000">Sélectionnez une heure</option>
                             <option value="09:00">09:00 - 10:00</option>
                             <option value="10:00">10:00 - 11:00</option>
@@ -162,13 +184,15 @@
                         <i data-feather="clock" class="form-icon"></i>
                     </div>
                 </div>
-                
+
                 <!-- Agence et Motif -->
                 <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <!-- Agence -->
                     <div class="form-group relative">
-                        <label for="agence" class="block text-gray-700 font-medium mb-2">Agence <span class="text-red-500">*</span></label>
-                        <select id="agence" name="agence" class="form-control w-full p-3 rounded-lg appearance-none" required>
+                        <label for="agence" class="block text-gray-700 font-medium mb-2">Agence <span
+                                class="text-red-500">*</span></label>
+                        <select id="agence" name="agence" class="form-control w-full p-3 rounded-lg appearance-none"
+                            required>
                             <option value="">Sélectionnez une agence</option>
                             <option value="Abidjan">Abidjan</option>
                             <option value="Paris">Paris</option>
@@ -180,8 +204,10 @@
 
                     <!-- Motif -->
                     <div class="form-group relative">
-                        <label for="motif" class="block text-gray-700 font-medium mb-2">Motif du Rendez-vous <span class="text-red-500">*</span></label>
-                        <select id="motif" name="motif" class="form-control w-full p-3 rounded-lg appearance-none" required>
+                        <label for="motif" class="block text-gray-700 font-medium mb-2">Motif du Rendez-vous <span
+                                class="text-red-500">*</span></label>
+                        <select id="motif" name="motif"
+                            class="form-control w-full p-3 rounded-lg appearance-none" required>
                             <option value="">Sélectionnez un motif</option>
                             <option value="Déposer un colis">Déposer un colis</option>
                             <option value="Retirer un colis">Retirer un colis</option>
@@ -193,12 +219,15 @@
 
                 <!-- Précisez le motif (caché par défaut) -->
                 <div id="autre-motif-group" class="form-group mb-6" style="display: none;">
-                    <label for="autre_motif" class="block text-gray-700 font-medium mb-2">Précisez le motif <span class="text-red-500">*</span></label>
-                    <input type="text" id="autre_motif" name="autre_motif" class="form-control w-full p-3 rounded-lg" placeholder="Votre motif" />
+                    <label for="autre_motif" class="block text-gray-700 font-medium mb-2">Précisez le motif <span
+                            class="text-red-500">*</span></label>
+                    <input type="text" id="autre_motif" name="autre_motif"
+                        class="form-control w-full p-3 rounded-lg" placeholder="Votre motif" />
                 </div>
 
                 <!-- Bouton Soumettre -->
-                <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium text-lg flex items-center justify-center">
+                <button type="submit"
+                    class="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium text-lg flex items-center justify-center">
                     Confirmer le rendez-vous
                     <i data-feather="arrow-right" class="ml-2"></i>
                 </button>
@@ -207,16 +236,16 @@
     </div>
 
     <!-- WhatsApp Button -->
-    <div class="whatsapp-button fixed bottom-8 right-8 z-50">
+    {{-- <div class="whatsapp-button fixed bottom-8 right-8 z-50">
         <a href="#" id="whatsappButton" class="whatsapp-btn">
             <i data-feather="message-circle"></i>
         </a>
-    </div>
+    </div> --}}
 
     <script>
         $(document).ready(function() {
             feather.replace();
-            
+
             // Date min aujourd'hui
             const today = new Date();
             const dd = String(today.getDate()).padStart(2, '0');
@@ -228,7 +257,9 @@
             $('#rendezvousForm').submit(function(e) {
                 e.preventDefault();
                 
-                // Afficher un loader SweetAlert
+                const formData = new FormData(this);
+                
+                // Afficher un loader
                 Swal.fire({
                     title: 'Traitement en cours...',
                     text: 'Merci de patienter pendant la confirmation de votre rendez-vous.',
@@ -238,30 +269,71 @@
                     }
                 });
                 
-                // Simuler une requête AJAX (à remplacer par votre véritable appel API)
-                setTimeout(() => {
-                    Swal.close();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Rendez-vous confirmé!',
-                        html: `
-                            <div class="text-center">
-                                <i data-feather="check-circle" class="w-12 h-12 text-purple-500 mb-4 mx-auto"></i>
-                                <p class="text-lg">Votre rendez-vous a bien été enregistré.</p>
-                                <p class="mt-2 text-gray-600">Un email de confirmation vous a été envoyé.</p>
-                            </div>
-                        `,
-                        confirmButtonText: 'Fermer',
-                        confirmButtonColor: '#7B01F7',
-                        customClass: {
-                            popup: 'rounded-xl shadow-2xl',
-                            confirmButton: 'px-6 py-2 rounded-lg font-medium'
+                // Envoyer la requête AJAX
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        Swal.close();
+                        
+                        if (response.redirect) {
+                            let title = response.email_error ? 
+                                'Rendez-vous confirmé (Email en attente)' : 
+                                'Rendez-vous confirmé!';
+                            
+                            let html = response.email_error ? 
+                                `<div class="text-center">
+                                    <i data-feather="check-circle" class="w-12 h-12 text-green-500 mb-4 mx-auto"></i>
+                                    <p class="text-lg">Votre rendez-vous a bien été enregistré.</p>
+                                    <p class="mt-2 text-gray-600">L'email de confirmation n'a pas pu être envoyé. Nous vous contacterons par téléphone si nécessaire.</p>
+                                </div>` :
+                                `<div class="text-center">
+                                    <i data-feather="check-circle" class="w-12 h-12 text-purple-500 mb-4 mx-auto"></i>
+                                    <p class="text-lg">Votre rendez-vous a bien été enregistré.</p>
+                                    <p class="mt-2 text-gray-600">Un email de confirmation vous a été envoyé.</p>
+                                </div>`;
+                            
+                            Swal.fire({
+                                icon: 'success',
+                                title: title,
+                                html: html,
+                                confirmButtonText: 'Fermer',
+                                confirmButtonColor: '#7B01F7'
+                            }).then(() => {
+                                $('#rendezvousForm')[0].reset();
+                                $('#autre-motif-group').hide();
+                            });
                         }
-                    }).then(() => {
-                        $('#rendezvousForm')[0].reset();
-                    });
-                    feather.replace();
-                }, 2000);
+                        feather.replace();
+                    },
+                    error: function(xhr) {
+                        Swal.close();
+                        let errorMessage = 'Une erreur s\'est produite';
+                        
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                            
+                            if (xhr.responseJSON.errors) {
+                                const errors = Object.values(xhr.responseJSON.errors).flat();
+                                errorMessage = errors.join(', ');
+                            }
+                        }
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erreur',
+                            text: errorMessage,
+                            confirmButtonText: 'Fermer',
+                            confirmButtonColor: '#7B01F7'
+                        });
+                    }
+                });
             });
 
             // Valider la date (pas de week-end)
@@ -339,8 +411,11 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        const message = encodeURIComponent("Bonjour, je vous contacte via WhatsApp !");
-                        window.open(`https://api.whatsapp.com/send?phone=${result.value}&text=${message}`, '_blank');
+                        const message = encodeURIComponent(
+                            "Bonjour, je vous contacte via WhatsApp !");
+                        window.open(
+                            `https://api.whatsapp.com/send?phone=${result.value}&text=${message}`,
+                            '_blank');
                     }
                 });
                 feather.replace();
@@ -348,4 +423,5 @@
         });
     </script>
 </body>
+
 </html>

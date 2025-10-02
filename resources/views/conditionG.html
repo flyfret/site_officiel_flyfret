@@ -3,235 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlyFret - Conditions Générales</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Plateforme d'Expédition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #7b01f7;
-            --primary-light: #9a49f9;
-            --secondary-color: #d90ad9;
-            --dark-color: #2d3748;
-            --light-color: #f7fafc;
-            --white: #ffffff;
-            --gray-light: #edf2f7;
-            --gray: #e2e8f0;
-        }
-
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
             line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-color);
         }
-
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 100px 0;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Styles pour le popup */
+        .popup-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/assets/images/pattern.svg') repeat;
-            opacity: 0.1;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-
-        .title-divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        .content-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        .section-card {
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        
+        .popup {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
             padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid var(--gray);
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .list-item {
-            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s;
             position: relative;
-            padding-left: 25px;
         }
-
-        .list-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary-light);
+        
+        .popup-overlay.active .popup {
+            transform: translateY(0);
+        }
+        
+        .popup-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .popup-icon {
+            background: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-right: 15px;
         }
-
-        .highlight-box {
-            background-color: rgba(123, 1, 247, 0.05);
-            border-left: 4px solid var(--primary-color);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
+        
+        .popup-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
         }
-
+        
+        .popup-content {
+            margin-bottom: 25px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .info-icon {
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #7f8c8d;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-close:hover {
+            color: #e74c3c;
+        }
+        
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 70px 0;
-            }
-            
-            .content-container {
-                padding: 30px 15px;
-            }
-            
-            .section-card {
+            .popup {
+                width: 95%;
                 padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero-section" data-aos="fade-down">
-        <div class="hero-content">
-            <h1 class="text-4xl font-bold mb-4">Conditions Générales d'Utilisation</h1>
-            <p class="text-xl opacity-90">Les règles et engagements qui régissent nos services</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <div class="content-container">
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">1. Acceptation des conditions</h2>
-            <p>En utilisant les services de FlyFret, vous acceptez pleinement et sans réserve les présentes conditions générales. Ces conditions s'appliquent à tous les services proposés par notre plateforme.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Important :</strong> Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser nos services. L'utilisation de nos services vaut acceptation des conditions en vigueur au moment de l'utilisation.</p>
+    <div class="container">
+        <header>
+            <h1>Plateforme d'Expédition</h1>
+            <p class="subtitle">Gestion simplifiée de vos envois de colis</p>
+        </header>
+        
+        <main>
+            <div class="content-card">
+                <h2>Nouvel envoi</h2>
+                <form id="shipment-form">
+                    <div class="form-group">
+                        <label for="sender">Expéditeur</label>
+                        <input type="text" id="sender" placeholder="Nom complet de l'expéditeur" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipient">Destinataire</label>
+                        <input type="text" id="recipient" placeholder="Nom complet du destinataire" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="weight">Poids du colis (kg)</label>
+                        <input type="number" id="weight" step="0.1" placeholder="Poids en kilogrammes" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dimensions">Dimensions (L x l x H en cm)</label>
+                        <input type="text" id="dimensions" placeholder="Ex: 30x20x15" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description du contenu</label>
+                        <textarea id="description" rows="3" placeholder="Décrivez brièvement le contenu du colis"></textarea>
+                    </div>
+                    
+                    <button type="submit">Créer l'envoi</button>
+                </form>
             </div>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">2. Services proposés</h2>
-            <p>FlyFret propose des services de transport et de livraison de colis selon les modalités suivantes :</p>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Plateforme d'Expédition. Tous droits réservés.</p>
+        </footer>
+    </div>
+    
+    <!-- Popup d'information -->
+    <div class="popup-overlay" id="info-popup">
+        <div class="popup">
+            <button class="popup-close" id="close-popup">&times;</button>
             
-            <ul class="mt-4">
-                <li class="list-item">Service standard avec délai de livraison de 2 à 5 jours ouvrés</li>
-                <li class="list-item">Service express avec livraison sous 24 à 48 heures</li>
-                <li class="list-item">Suivi en temps réel des colis</li>
-                <li class="list-item">Assurance optionnelle des colis</li>
-            </ul>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">3. Engagements de FlyFret</h2>
-            <p>Nous nous engageons à :</p>
-            
-            <ul class="mt-4">
-                <li class="list-item">Respecter les délais de livraison annoncés</li>
-                <li class="list-item">Traiter les colis avec soin et professionnalisme</li>
-                <li class="list-item">Maintenir la confidentialité des informations clients</li>
-                <li class="list-item">Fournir un service client réactif et efficace</li>
-            </ul>
-            
-            <div class="highlight-box mt-6">
-                <p><strong>Limitation de responsabilité :</strong> FlyFret ne peut être tenu responsable des retards de livraison dus à des circonstances indépendantes de sa volonté (grèves, intempéries, etc.).</p>
+            <div class="popup-header">
+                <div class="popup-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h3 class="popup-title">Information importante</h3>
             </div>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">4. Obligations du client</h2>
-            <p>En utilisant nos services, vous vous engagez à :</p>
             
-            <ul class="mt-4">
-                <li class="list-item">Fournir des informations exactes et complètes</li>
-                <li class="list-item">Respecter les restrictions concernant les colis (poids, dimensions, contenus prohibés)</li>
-                <li class="list-item">Emballer correctement vos colis pour le transport</li>
-                <li class="list-item">Payer les frais de transport selon les tarifs en vigueur</li>
-            </ul>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">5. Tarifs et paiement</h2>
-            <p>Les tarifs sont calculés en fonction :</p>
-            
-            <ul class="mt-4">
-                <li class="list-item">Du poids et des dimensions du colis</li>
-                <li class="list-item">De la distance à parcourir</li>
-                <li class="list-item">De la vitesse de livraison choisie</li>
-                <li class="list-item">Des options supplémentaires (assurance, livraison premium)</li>
-            </ul>
-            
-            <p class="mt-6">Les paiements peuvent être effectués :</p>
-            <ul class="mt-2">
-                <li class="list-item">En ligne par carte bancaire</li>
-                <li class="list-item">En espèces à la livraison (selon options disponibles)</li>
-                <li class="list-item">Par virement bancaire (pour les clients professionnels)</li>
-            </ul>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">6. Protection des données</h2>
-            <p>FlyFret s'engage à protéger vos données personnelles conformément au RGPD. Les données collectées sont utilisées uniquement dans le cadre de la prestation de nos services et ne sont pas transmises à des tiers sans votre consentement.</p>
-            
-            <div class="highlight-box mt-6">
-                <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ces droits, contactez notre service client.</p>
+            <div class="popup-content">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div>
+                        <p><strong>Vérification du poids</strong><br>
+                        Les poids des colis renseignés sur cette plateforme seront systématiquement repesés à l'agence lors du dépôt.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <p><strong>Précision des informations</strong><br>
+                        Veuillez vous assurer de fournir des informations exactes concernant le contenu et les dimensions de votre colis.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p><strong>Tarification finale</strong><br>
+                        Le tarif définitif sera calculé sur la base du poids et des dimensions mesurés à l'agence.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="section-card" data-aos="fade-up">
-            <h2 class="section-title">7. Modifications des conditions</h2>
-            <p>FlyFret se réserve le droit de modifier les présentes conditions générales à tout moment. Les modifications prendront effet dès leur publication sur notre site. Nous vous recommandons de consulter régulièrement cette page.</p>
             
-            <p class="mt-6">Pour toute question concernant nos conditions générales, vous pouvez nous contacter :</p>
-            <ul class="mt-2">
-                <li class="list-item">Par email : contact@flyfret.com</li>
-                <li class="list-item">Par téléphone : +33 1 23 45 67 89</li>
-                <li class="list-item">Via notre formulaire de contact en ligne</li>
-            </ul>
+            <button id="understand-btn" style="width: 100%;">J'ai compris</button>
         </div>
     </div>
 
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+        // Afficher le popup au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('info-popup');
+            popup.classList.add('active');
+            
+            // Fermer le popup avec le bouton de fermeture
+            document.getElementById('close-popup').addEventListener('click', function() {
+                popup.classList.remove('active');
+            });
+            
+            // Fermer le popup avec le bouton "J'ai compris"
+            document.getElementById('understand-btn').addEventListener('click', function() {
+                popup.classList.remove('active');
+            });
+            
+            // Fermer le popup en cliquant en dehors
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.classList.remove('active');
+                }
+            });
+            
+            // Gestion de la soumission du formulaire
+            document.getElementById('shipment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Votre demande d\'envoi a été enregistrée avec succès. N\'oubliez pas que le poids sera vérifié à l\'agence.');
+                this.reset();
+            });
         });
-        feather.replace();
     </script>
 </body>
 </html>

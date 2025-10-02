@@ -12,16 +12,16 @@ class GrilleDesPrixSeeder extends Seeder
         DB::table('grille_des_prix')->insert([
             // Objets classiques (valeur < 100 €)
             ['categorie' => 'Objet classique', 'designation' => 'De 0 à 20 kg', 'origine' => 'Paris', 'destination' => 'Abidjan', 'prix' => 12, 'unite' => '€/kg'],
-            ['categorie' => 'Objet classique', 'designation' => 'De 0 à 20 kg', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 14, 'unite' => '€/kg'],
-            ['categorie' => 'Objet classique', 'designation' => 'De 0 à 20 kg', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 14, 'unite' => '€/kg'],
+            ['categorie' => 'Objet classique', 'designation' => 'De 0 à 20 kg', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 13, 'unite' => '€/kg'],
+            ['categorie' => 'Objet classique', 'designation' => 'De 0 à 20 kg', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 13, 'unite' => '€/kg'],
             ['categorie' => 'Objet classique', 'designation' => 'Plus de 20 kg', 'origine' => 'Paris', 'destination' => 'Abidjan', 'prix' => 11, 'unite' => '€/kg'],
-            ['categorie' => 'Objet classique', 'designation' => 'Plus de 20 kg', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 13, 'unite' => '€/kg'],
-            ['categorie' => 'Objet classique', 'designation' => 'Plus de 20 kg', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 13, 'unite' => '€/kg'],
+            ['categorie' => 'Objet classique', 'designation' => 'Plus de 20 kg', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 12, 'unite' => '€/kg'],
+            ['categorie' => 'Objet classique', 'designation' => 'Plus de 20 kg', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 12, 'unite' => '€/kg'],
 
             // Objets de valeur
-            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppes', 'origine' => 'Paris', 'destination' => 'Abidjan', 'prix' => 25, 'unite' => '€'],
-            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppes', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 30, 'unite' => '€'],
-            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppes', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 30, 'unite' => '€'],
+            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppe', 'origine' => 'Paris', 'destination' => 'Abidjan', 'prix' => 25, 'unite' => '€'],
+            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppe', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 30, 'unite' => '€'],
+            ['categorie' => 'Objet de valeur', 'designation' => 'Enveloppe', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 30, 'unite' => '€'],
             ['categorie' => 'Objet de valeur', 'designation' => 'Passeport', 'origine' => 'Paris', 'destination' => 'Abidjan', 'prix' => 30, 'unite' => '€'],
             ['categorie' => 'Objet de valeur', 'designation' => 'Passeport', 'origine' => 'Lyon', 'destination' => 'Abidjan', 'prix' => 35, 'unite' => '€'],
             ['categorie' => 'Objet de valeur', 'designation' => 'Passeport', 'origine' => 'Nancy', 'destination' => 'Abidjan', 'prix' => 35, 'unite' => '€'],
@@ -53,7 +53,7 @@ class GrilleDesPrixSeeder extends Seeder
             ['categorie' => 'Colis divers', 'designation' => 'De 0 à 20 kg', 'origine' => 'Abidjan', 'destination' => 'Nancy', 'prix' => 12, 'unite' => '€/kg'],
 
             // Colis spéciaux
-            ['categorie' => 'Colis spéciaux', 'designation' => 'Enveloppe', 'origine' => 'Abidjan', 'destination' => 'Paris', 'prix' => 20, 'unite' => '€'],
+            // ['categorie' => 'Colis spéciaux', 'designation' => 'Enveloppe', 'origine' => 'Abidjan', 'destination' => 'Paris', 'prix' => 20, 'unite' => '€'],
             ['categorie' => 'Colis spéciaux', 'designation' => 'Colis périssable', 'origine' => 'Abidjan', 'destination' => 'Lyon', 'prix' => 2, 'unite' => '€/kg'],
             ['categorie' => 'Colis spéciaux', 'designation' => 'Colis périssable', 'origine' => 'Abidjan', 'destination' => 'Nancy', 'prix' => 2, 'unite' => '€/kg'],
         ]);

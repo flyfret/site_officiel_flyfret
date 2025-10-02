@@ -78,7 +78,8 @@
             <button id="mobileMoneyBtn" class="active">Mobile Money</button>
             <button id="cardBtn">Carte de crédit</button>
         </div>
-        <form id="paymentForm" method="POST" action="{{ route('paiements.store') }}">
+        <form id="paymentForm" method="POST">
+             {{-- action="{{ route('paiements.store') }} --}}
         @csrf 
             <div id="mobileMoneyFields">
                 <div class="form-group">

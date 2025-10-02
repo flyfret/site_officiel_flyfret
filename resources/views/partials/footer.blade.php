@@ -71,15 +71,15 @@
                             <li class="d-flex mb-3">
                                 <i class="far fa-clock mt-1 me-3" style="color:#F20CF3;"></i>
                                 <div>
-                                    <strong>Lundi - Samedi</strong><br>
-                                    9h - 19h
+                                    <strong>Lundi - Vendredi</strong><br>
+                                    9h - 18h
                                 </div>
                             </li>
                             <li class="d-flex">
                                 <i class="far fa-clock mt-1 me-3" style="color: #F20CF3;"></i>
                                 <div>
-                                    <strong>Dimanche</strong><br>
-                                    14h - 19h
+                                    <strong>Samedi</strong><br>
+                                    09h - 14h
                                 </div>
                             </li>
                         </ul>
@@ -100,22 +100,16 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
+    <!-- WhatsApp & Messenger Buttons -->
     <div class="whatsapp-button">
-        <a href="#" class="whatsapp-btn" id="whatsappButton" style="background: linear-gradient(135deg, #25D366, #128C7E);">
+        <a href="https://wa.me/+2250594946565" class="whatsapp-btn" target="_blank" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); margin-bottom:8px;">
             <i class="fab fa-whatsapp fa-lg"></i>
         </a>
-        
-        <select id="whatsappSelect" class="form-select d-none">
-            <option value="">Sélectionnez une ville</option>
-            <option value="+33751551845">Paris</option>
-            <option value="+33751455595">Lyon</option>
-            <option value="+33751455595">Nancy</option>
-            <option value="+225 0594946565">Abidjan</option>
-        </select>
-        
-        <a href="https://www.facebook.com/p/Exp%C3%A9dition-de-colis-by-Fly-Fret-100090511771224/?_rdr " class="messenger-btn" target="_blank" style="background: linear-gradient(135deg, #006AFF, #0084FF);">
+        <a href="https://www.facebook.com/p/Exp%C3%A9dition-de-colis-by-Fly-Fret-100090511771224/?_rdr" class="messenger-btn" target="_blank" style="background: linear-gradient(135deg, #8022F4, #F20CF3);">
             <i class="fab fa-facebook-messenger fa-lg"></i>
+        </a>
+        <a href="https://www.tiktok.com/@expdition.de.coli?lang=fr" class="tiktok-btn" target="_blank" style="background: linear-gradient(135deg, #000000 0%, #8f5aff 100%); margin-top:8px;">
+            <i class="fab fa-tiktok fa-lg"></i>
         </a>
     </div>
 
@@ -236,44 +230,75 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+        .tiktok-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .tiktok-btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.1);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+    .tiktok-btn:hover::after {
+        transform: translateY(0);
+    }
+    .tiktok-btn:hover {
+        transform: scale(1.1);
+    }
     </style>
 
     <!-- Script pour le bouton WhatsApp -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const whatsappButton = document.getElementById('whatsappButton');
-            const whatsappSelect = document.getElementById('whatsappSelect');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const whatsappButton = document.getElementById('whatsappButton');
+        //     const whatsappSelect = document.getElementById('whatsappSelect');
             
-            whatsappButton.addEventListener('click', function(e) {
-                e.preventDefault();
+        //     whatsappButton.addEventListener('click', function(e) {
+        //         e.preventDefault();
                 
-                if (whatsappSelect.classList.contains('d-none')) {
-                    whatsappSelect.classList.remove('d-none');
-                    setTimeout(() => {
-                        if (!whatsappSelect.classList.contains('d-none')) {
-                            whatsappSelect.classList.add('d-none');
-                        }
-                    }, 10000);
-                } else {
-                    whatsappSelect.classList.add('d-none');
-                }
-            });
+        //         if (whatsappSelect.classList.contains('d-none')) {
+        //             whatsappSelect.classList.remove('d-none');
+        //             setTimeout(() => {
+        //                 if (!whatsappSelect.classList.contains('d-none')) {
+        //                     whatsappSelect.classList.add('d-none');
+        //                 }
+        //             }, 10000);
+        //         } else {
+        //             whatsappSelect.classList.add('d-none');
+        //         }
+        //     });
             
-            whatsappSelect.addEventListener('change', function() {
-                const numero = this.value.trim();
-                if (numero) {
-                    const message = encodeURIComponent("Bonjour FlyFret, je vous contacte via WhatsApp concernant vos services d'import-export !");
-                    const lienWhatsApp = "https://wa.me/" + numero.replace(/\s+/g, '') + "?text=" + message;
-                    window.open(lienWhatsApp, '_blank');
-                    this.classList.add('d-none');
-                }
-            });
+        //     // whatsappSelect.addEventListener('change', function() {
+        //     //     const numero = this.value.trim();
+        //     //     if (numero) {
+        //     //         const message = encodeURIComponent("Bonjour FlyFret, je vous contacte via WhatsApp concernant vos services d'import-export !");
+        //     //         const lienWhatsApp = "https://wa.me/" + numero.replace(/\s+/g, '') + "?text=" + message;
+        //     //         window.open(lienWhatsApp, '_blank');
+        //     //         this.classList.add('d-none');
+        //     //     }
+        //     // });
             
-            // Fermer le select si on clique ailleurs
-            document.addEventListener('click', function(e) {
-                if (!whatsappButton.contains(e.target) && !whatsappSelect.contains(e.target)) {
-                    whatsappSelect.classList.add('d-none');
-                }
-            });
-        });
+        //     // Fermer le select si on clique ailleurs
+        //     document.addEventListener('click', function(e) {
+        //         if (!whatsappButton.contains(e.target) && !whatsappSelect.contains(e.target)) {
+        //             whatsappSelect.classList.add('d-none');
+        //         }
+        //     });
+        // });
     </script>
